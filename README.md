@@ -1,17 +1,18 @@
 # 🎮 Number Match Logic Engine
 
-[![Android Release](https://img.shields.io/badge/Download-Android%20APK-brightgreen?style=for-the-badge&logo=android)](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/download/v1.0.0/app-release.apk)
+[![Android Release](https://img.shields.io/badge/Download-Android%20APK-brightgreen?style=for-the-badge&logo=android)](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/latest/download/app-release.apk)
 [![GitHub Release](https://img.shields.io/github/v/release/ayushmanji/Number-Match-Logic-Engine?style=for-the-badge&logo=github)](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/tag/v1.0.0)
 
 > A deterministic solvability system and interactive game engine for Number Match puzzles, built with React, TypeScript, Vite, and Capacitor for Android.
 
 ---
 
-## 📲 Direct APK Download
+## 📲 Direct APK Download Links
 
-Download the release APK for Android directly (no login required):
+Download the release APK for Android directly (publicly accessible, no login required):
 
-👉 **[Download Production Release APK (v1.0.0)](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/download/v1.0.0/app-release.apk)**
+👉 **[Download Latest Release APK (Direct Link)](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/latest/download/app-release.apk)**  
+👉 **[Download v1.0.0 Release APK](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/download/v1.0.0/app-release.apk)**
 
 - **Package Name**: `com.ezygamers.sumlinknumbergame`
 - **Version**: `1.0.0`
@@ -27,7 +28,7 @@ Download the release APK for Android directly (no login required):
 - **Deterministic Solvability Engine**: Solvability simulator panel to model outcomes, strategy analysis, and level performance.
 - **Sawtooth Chart Visualization**: Dynamic charting of puzzle difficulty and pair density across steps.
 - **Interactive Documentation**: Built-in architecture breakdown, game rules, and technical specifications.
-- **Cross-Platform Design**: Responsive web layout compiled into a native Android app via Capacitor.
+- **Fully Responsive Mobile Design**: Custom mobile navbar, touch targets, and grid layout optimized for mobile screens.
 
 ---
 
@@ -78,6 +79,7 @@ A full video demonstration of the app in action is available in the repository a
 
 ## 🔗 Project Links
 
+- **Direct APK Download (Latest)**: [https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/latest/download/app-release.apk](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/latest/download/app-release.apk)
+- **Direct APK Download (v1.0.0)**: [https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/download/v1.0.0/app-release.apk](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/download/v1.0.0/app-release.apk)
 - **GitHub Repository**: [https://github.com/ayushmanji/Number-Match-Logic-Engine](https://github.com/ayushmanji/Number-Match-Logic-Engine)
 - **GitHub Release Page**: [https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/tag/v1.0.0](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/tag/v1.0.0)
-- **Direct APK Download**: [https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/download/v1.0.0/app-release.apk](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/download/v1.0.0/app-release.apk)
