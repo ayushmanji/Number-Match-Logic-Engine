@@ -1,18 +1,20 @@
 # 🎮 Number Match Logic Engine
 
+[![Live Web Preview](https://img.shields.io/badge/Vercel-Web%20App%20Preview-black?style=for-the-badge&logo=vercel)](https://number-match-logic-engine.vercel.app)
 [![Android Release](https://img.shields.io/badge/Download-Android%20APK-brightgreen?style=for-the-badge&logo=android)](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/latest/download/app-release.apk)
 [![GitHub Release](https://img.shields.io/github/v/release/ayushmanji/Number-Match-Logic-Engine?style=for-the-badge&logo=github)](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/tag/v1.0.0)
 
-> A deterministic solvability system and interactive game engine for Number Match puzzles, built with React, TypeScript, Vite, and Capacitor for Android.
+> A deterministic solvability system and interactive game engine for Number Match puzzles, built with React, TypeScript, Vite, Tailwind CSS, and Capacitor for Android.
 
 ---
 
-## 📲 Direct APK Download Links
+## 🌐 Live Web App & APK Download Links
 
-Download the release APK for Android directly (publicly accessible, no login required):
+- 🌐 **Live Web Application (Vercel)**:  
+  👉 **[https://number-match-logic-engine.vercel.app](https://number-match-logic-engine.vercel.app)**
 
-👉 **[Download Latest Release APK (Direct Link)](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/latest/download/app-release.apk)**  
-👉 **[Download v1.0.0 Release APK](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/download/v1.0.0/app-release.apk)**
+- 📲 **Direct Release APK Download (Android)**:  
+  👉 **[https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/latest/download/app-release.apk](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/latest/download/app-release.apk)**
 
 - **Package Name**: `com.ezygamers.sumlinknumbergame`
 - **Version**: `1.0.0`
@@ -37,6 +39,7 @@ Download the release APK for Android directly (publicly accessible, no login req
 - **Frontend**: React 19, TypeScript, Vite
 - **Styling**: Tailwind CSS v4, Lucide Icons, Recharts
 - **Mobile Container**: Capacitor 8 (Android)
+- **Deployment**: Vercel (Web App) + GitHub Releases (Android APK)
 - **Tooling**: Gradle, Oxlint, JDK 24
 
 ---
@@ -79,7 +82,7 @@ A full video demonstration of the app in action is available in the repository a
 
 ## 🔗 Project Links
 
+- **Live Web App**: [https://number-match-logic-engine.vercel.app](https://number-match-logic-engine.vercel.app)
 - **Direct APK Download (Latest)**: [https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/latest/download/app-release.apk](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/latest/download/app-release.apk)
-- **Direct APK Download (v1.0.0)**: [https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/download/v1.0.0/app-release.apk](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/download/v1.0.0/app-release.apk)
 - **GitHub Repository**: [https://github.com/ayushmanji/Number-Match-Logic-Engine](https://github.com/ayushmanji/Number-Match-Logic-Engine)
 - **GitHub Release Page**: [https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/tag/v1.0.0](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/tag/v1.0.0)
