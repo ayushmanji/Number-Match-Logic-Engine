@@ -29,10 +29,10 @@ export const CellView: React.FC<CellViewProps> = ({
   if (cell.cleared) {
     return (
       <div 
-        className="aspect-square flex items-center justify-center rounded-xl bg-slate-950/40 border border-slate-900/60 transition-opacity"
+        className="aspect-square flex items-center justify-center rounded-lg sm:rounded-xl bg-slate-950/40 border border-slate-900/60 transition-opacity"
         aria-hidden="true"
       >
-        <span className="text-slate-800 font-extrabold text-sm opacity-20 select-none">✕</span>
+        <span className="text-slate-800 font-extrabold text-xs sm:text-sm opacity-20 select-none">✕</span>
       </div>
     );
   }
@@ -46,16 +46,16 @@ export const CellView: React.FC<CellViewProps> = ({
         isSelected ? ', selected' : ''
       }${isHinted ? ', hinted match' : ''}`}
       aria-pressed={isSelected}
-      className={`aspect-square relative flex items-center justify-center rounded-xl font-black text-xl sm:text-2xl transition-all transform active:scale-90 focus:outline-none focus:ring-2 focus:ring-indigo-400 ${
+      className={`aspect-square relative flex items-center justify-center rounded-lg sm:rounded-xl font-black text-base sm:text-2xl transition-all transform active:scale-90 focus:outline-none focus:ring-2 focus:ring-indigo-400 ${
         isSelected
-          ? 'bg-gradient-to-tr from-indigo-500 to-pink-500 text-white ring-4 ring-indigo-400 scale-105 shadow-xl shadow-indigo-500/50 z-10'
+          ? 'bg-gradient-to-tr from-indigo-500 to-pink-500 text-white ring-2 sm:ring-4 ring-indigo-400 scale-105 shadow-xl shadow-indigo-500/50 z-10'
           : isHinted
-          ? 'bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 ring-4 ring-amber-400 animate-pulse scale-105 z-10'
+          ? 'bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 ring-2 sm:ring-4 ring-amber-400 animate-pulse scale-105 z-10'
           : `bg-gradient-to-tr ${gradientClass} hover:brightness-110 shadow-md border border-white/10 hover:scale-105`
       }`}
     >
       <span>{cell.val}</span>
-      <span className="absolute bottom-1 right-1 text-[8px] font-medium text-slate-400/40">
+      <span className="absolute bottom-0.5 right-0.5 sm:bottom-1 sm:right-1 text-[7px] sm:text-[8px] font-medium text-slate-400/40 select-none">
         {cell.row},{cell.col}
       </span>
     </button>

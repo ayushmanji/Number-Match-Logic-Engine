@@ -67,8 +67,8 @@ export const GameBoard: React.FC<GameBoardProps> = ({
   return (
     <div className="relative max-w-4xl mx-auto flex flex-col items-center">
       {/* 9-Column Grid Container */}
-      <div className="w-full bg-slate-900/60 p-4 sm:p-6 rounded-3xl border border-slate-800 shadow-2xl backdrop-blur-xl">
-        <div className="grid grid-cols-9 gap-2 sm:gap-3">
+      <div className="w-full bg-slate-900/60 p-2.5 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-800 shadow-2xl backdrop-blur-xl">
+        <div className="grid grid-cols-9 gap-1.5 sm:gap-3">
           {boardState.cells.map((cell) => {
             const isSelected = selectedCell?.id === cell.id;
             const isHinted =
@@ -87,7 +87,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
         </div>
 
         {/* Add Rows Button at Bottom of Grid */}
-        <div className="mt-6 flex justify-center">
+        <div className="mt-4 sm:mt-6 flex justify-center">
           <button
             onClick={onAddRow}
             disabled={
@@ -95,7 +95,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
               boardState.isWon ||
               boardState.isGameOver
             }
-            className="w-full max-w-md py-3.5 px-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white font-extrabold text-base rounded-2xl shadow-xl shadow-indigo-600/30 transition-all transform active:scale-95 flex items-center justify-center space-x-2 border border-white/10 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full max-w-md py-3 sm:py-3.5 px-4 sm:px-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white font-extrabold text-sm sm:text-base rounded-xl sm:rounded-2xl shadow-xl shadow-indigo-600/30 transition-all transform active:scale-95 flex items-center justify-center space-x-2 border border-white/10 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <span>(+) Add Numbers ({boardState.maxAddRows - boardState.addRowsUsed} Left)</span>
           </button>
@@ -105,39 +105,39 @@ export const GameBoard: React.FC<GameBoardProps> = ({
       {/* Victory Modal Overlay */}
       {boardState.isWon && (
         <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-fade-in">
-          <div className="bg-slate-900 border border-indigo-500/40 rounded-3xl p-8 max-w-md w-full text-center shadow-2xl shadow-indigo-500/20">
-            <div className="w-20 h-20 bg-gradient-to-tr from-amber-400 to-yellow-300 rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl shadow-amber-500/40 animate-bounce">
-              <Trophy className="w-10 h-10 text-slate-950" />
+          <div className="bg-slate-900 border border-indigo-500/40 rounded-3xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl shadow-indigo-500/20">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-tr from-amber-400 to-yellow-300 rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl shadow-amber-500/40 animate-bounce">
+              <Trophy className="w-8 h-8 sm:w-10 sm:h-10 text-slate-950" />
             </div>
-            <h2 className="text-3xl font-black text-white mb-2">Level Complete!</h2>
-            <p className="text-sm text-slate-300 mb-6">
+            <h2 className="text-2xl sm:text-3xl font-black text-white mb-2">Level Complete!</h2>
+            <p className="text-xs sm:text-sm text-slate-300 mb-6">
               You cleared all numbers on Level {boardState.level} with deterministic precision!
             </p>
 
             <div className="bg-slate-950 rounded-2xl p-4 mb-6 border border-slate-800 grid grid-cols-2 gap-4">
               <div>
                 <div className="text-xs text-slate-400">Add Rows Used</div>
-                <div className="text-xl font-black text-emerald-400">
+                <div className="text-lg sm:text-xl font-black text-emerald-400">
                   {boardState.addRowsUsed} / {boardState.maxAddRows}
                 </div>
               </div>
               <div>
                 <div className="text-xs text-slate-400">Matches Made</div>
-                <div className="text-xl font-black text-indigo-400">{boardState.matchesMade}</div>
+                <div className="text-lg sm:text-xl font-black text-indigo-400">{boardState.matchesMade}</div>
               </div>
             </div>
 
             <div className="flex space-x-3">
               <button
                 onClick={onRestart}
-                className="flex-1 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold rounded-xl border border-slate-700 transition-all flex items-center justify-center space-x-2"
+                className="flex-1 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold rounded-xl border border-slate-700 transition-all flex items-center justify-center space-x-2 text-xs sm:text-sm"
               >
                 <RefreshCw className="w-4 h-4" />
                 <span>Replay</span>
               </button>
               <button
                 onClick={onNextLevel}
-                className="flex-1 py-3 bg-gradient-to-r from-indigo-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white font-bold rounded-xl shadow-lg transition-all"
+                className="flex-1 py-3 bg-gradient-to-r from-indigo-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white font-bold rounded-xl shadow-lg transition-all text-xs sm:text-sm"
               >
                 Next Level →
               </button>
@@ -149,18 +149,18 @@ export const GameBoard: React.FC<GameBoardProps> = ({
       {/* Game Over Modal Overlay */}
       {boardState.isGameOver && (
         <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-900 border border-rose-500/40 rounded-3xl p-8 max-w-md w-full text-center shadow-2xl shadow-rose-500/20">
-            <div className="w-20 h-20 bg-rose-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-rose-500/40">
-              <AlertTriangle className="w-10 h-10 text-rose-400" />
+          <div className="bg-slate-900 border border-rose-500/40 rounded-3xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl shadow-rose-500/20">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-rose-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-rose-500/40">
+              <AlertTriangle className="w-8 h-8 sm:w-10 sm:h-10 text-rose-400" />
             </div>
-            <h2 className="text-3xl font-black text-white mb-2">No Moves Left!</h2>
-            <p className="text-sm text-slate-300 mb-6">
+            <h2 className="text-2xl sm:text-3xl font-black text-white mb-2">No Moves Left!</h2>
+            <p className="text-xs sm:text-sm text-slate-300 mb-6">
               You used all {boardState.maxAddRows} Add Row buttons without clearing the board.
             </p>
 
             <button
               onClick={onRestart}
-              className="w-full py-3.5 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2"
+              className="w-full py-3.5 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2 text-xs sm:text-sm"
             >
               <RefreshCw className="w-5 h-5" />
               <span>Try Level {boardState.level} Again</span>
