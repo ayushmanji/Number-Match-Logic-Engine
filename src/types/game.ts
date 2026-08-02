@@ -39,8 +39,10 @@ export interface BoardState {
   rescueTriggered: boolean;
   isWon: boolean;
   isGameOver: boolean;
+  timeExpired: boolean;
   matchesMade: number;
   totalTimeElapsed: number; // in seconds
+  timeRemaining: number; // in seconds
 }
 
 export interface SimulationResult {

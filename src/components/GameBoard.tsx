@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
-import { Trophy, RefreshCw, AlertTriangle } from 'lucide-react';
+import { Trophy, RefreshCw, AlertTriangle, Clock } from 'lucide-react';
 import type { BoardState, Cell, MatchPair } from '../types/game';
+import { getLevelConfig } from '../config/DifficultyConfig';
 import { CellView } from './CellView';
 
 interface GameBoardProps {
@@ -25,6 +26,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
 }) => {
   const [selectedCell, setSelectedCell] = useState<Cell | null>(null);
   const [hintPair, setHintPair] = useState<MatchPair | null>(null);
+  const config = getLevelConfig(boardState.level);
 
   // Trigger confetti on victory
   useEffect(() => {
@@ -63,6 +65,8 @@ export const GameBoard: React.FC<GameBoardProps> = ({
     onMakeMatch(selectedCell.id, cell.id);
     setSelectedCell(null);
   };
+
+  const isTimeSuccess = boardState.totalTimeElapsed <= config.targetTimeSeconds;
 
   return (
     <div className="relative max-w-4xl mx-auto flex flex-col items-center">
@@ -116,14 +120,16 @@ export const GameBoard: React.FC<GameBoardProps> = ({
 
             <div className="bg-slate-950 rounded-2xl p-4 mb-6 border border-slate-800 grid grid-cols-2 gap-4">
               <div>
+                <div className="text-xs text-slate-400">Completion Time</div>
+                <div className={`text-lg sm:text-xl font-black ${isTimeSuccess ? 'text-amber-300' : 'text-slate-300'}`}>
+                  {boardState.totalTimeElapsed}s <span className="text-[10px] text-slate-500 font-normal">/ {config.targetTimeSeconds}s</span>
+                </div>
+              </div>
+              <div>
                 <div className="text-xs text-slate-400">Add Rows Used</div>
                 <div className="text-lg sm:text-xl font-black text-emerald-400">
                   {boardState.addRowsUsed} / {boardState.maxAddRows}
                 </div>
-              </div>
-              <div>
-                <div className="text-xs text-slate-400">Matches Made</div>
-                <div className="text-lg sm:text-xl font-black text-indigo-400">{boardState.matchesMade}</div>
               </div>
             </div>
 
@@ -151,11 +157,19 @@ export const GameBoard: React.FC<GameBoardProps> = ({
         <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
           <div className="bg-slate-900 border border-rose-500/40 rounded-3xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl shadow-rose-500/20">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-rose-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-rose-500/40">
-              <AlertTriangle className="w-8 h-8 sm:w-10 sm:h-10 text-rose-400" />
+              {boardState.timeExpired ? (
+                <Clock className="w-8 h-8 sm:w-10 sm:h-10 text-rose-400 animate-pulse" />
+              ) : (
+                <AlertTriangle className="w-8 h-8 sm:w-10 sm:h-10 text-rose-400" />
+              )}
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white mb-2">No Moves Left!</h2>
+            <h2 className="text-2xl sm:text-3xl font-black text-white mb-2">
+              {boardState.timeExpired ? "Time's Up!" : "No Moves Left!"}
+            </h2>
             <p className="text-xs sm:text-sm text-slate-300 mb-6">
-              You used all {boardState.maxAddRows} Add Row buttons without clearing the board.
+              {boardState.timeExpired
+                ? `Target time of ${config.targetTimeSeconds}s expired before clearing the board.`
+                : `You used all ${boardState.maxAddRows} Add Row buttons without clearing the board.`}
             </p>
 
             <button

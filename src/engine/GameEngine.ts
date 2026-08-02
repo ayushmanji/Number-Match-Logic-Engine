@@ -2,6 +2,7 @@ import type { BoardState, MatchPair } from '../types/game';
 import { generateSeededBoard } from './SeedingEngine';
 import { findMatches } from './MatchFinder';
 import { generateAddRowCells } from './AddRowEngine';
+import { getLevelConfig } from '../config/DifficultyConfig';
 
 export class GameEngine {
   private state: BoardState;
@@ -12,6 +13,7 @@ export class GameEngine {
 
   private createInitialState(level: number): BoardState {
     const seeded = generateSeededBoard(level);
+    const config = getLevelConfig(level);
 
     return {
       cells: seeded.cells,
@@ -23,8 +25,10 @@ export class GameEngine {
       rescueTriggered: false,
       isWon: false,
       isGameOver: false,
+      timeExpired: false,
       matchesMade: 0,
       totalTimeElapsed: 0,
+      timeRemaining: config.targetTimeSeconds,
     };
   }
 
@@ -34,6 +38,18 @@ export class GameEngine {
 
   public getAvailableMatches(): MatchPair[] {
     return findMatches(this.state.cells, this.state.numCols);
+  }
+
+  public tickTimer(seconds = 1): void {
+    if (this.state.isWon || this.state.isGameOver) return;
+
+    this.state.totalTimeElapsed += seconds;
+    this.state.timeRemaining = Math.max(0, this.state.timeRemaining - seconds);
+
+    if (this.state.timeRemaining <= 0) {
+      this.state.timeExpired = true;
+      this.state.isGameOver = true;
+    }
   }
 
   public makeMatch(idA: string, idB: string): boolean {

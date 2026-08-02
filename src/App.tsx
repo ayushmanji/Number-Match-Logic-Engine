@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { GameEngine } from './engine/GameEngine';
 import type { BoardState, MatchPair } from './types/game';
 import { Navbar } from './components/Navbar';
@@ -40,6 +40,18 @@ export function App() {
     setBoardState(currentEngine.getState());
     setAvailableMatches(currentEngine.getAvailableMatches());
   };
+
+  // Live Timer Interval Hook
+  useEffect(() => {
+    if (activeTab !== 'PLAY' || boardState.isWon || boardState.isGameOver) return;
+
+    const timer = setInterval(() => {
+      engine.tickTimer(1);
+      refreshState(engine);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [activeTab, engine, boardState.isWon, boardState.isGameOver]);
 
   const handleLevelChange = (lvl: number) => {
     setCurrentLevel(lvl);
