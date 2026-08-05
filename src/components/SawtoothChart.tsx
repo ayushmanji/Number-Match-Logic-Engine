@@ -28,11 +28,11 @@ export const SawtoothChart: React.FC = () => {
 
   return (
     <div className="max-w-6xl mx-auto space-y-6">
-      {/* Sawtooth Curve Title Card */}
+      {/* Difficulty Curve Title Card */}
       <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl">
-        <h2 className="text-2xl font-black text-white">The Sawtooth Difficulty Curve</h2>
+        <h2 className="text-2xl font-black text-white">Difficulty Curve Visualization</h2>
         <p className="text-sm text-slate-400 mt-1 max-w-3xl">
-          Visualizes the rhythmic wave pattern of difficulty progression. Levels 1–5 ramp up time and friction, Level 6 drops difficulty as a relief level ("breath of fresh air"), and Levels 7–10 ramp up higher.
+          Visualizes the difficulty progression curve across levels 1 to 15, showing target times, initial match densities, and decoy friction scaling.
         </p>
       </div>
 

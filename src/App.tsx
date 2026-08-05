@@ -126,7 +126,7 @@ export function App() {
       </main>
 
       <footer className="border-t border-slate-900 bg-slate-950 py-4 text-center text-xs text-slate-500">
-        Number Match Deterministic Solvability System &copy; 2026 EzyGamers Studio
+        Number Match Puzzle Game &copy; 2026 EzyGamers Studio
       </footer>
     </div>
   );

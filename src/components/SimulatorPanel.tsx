@@ -49,7 +49,7 @@ export const SimulatorPanel: React.FC = () => {
             </span>
           </div>
           <p className="text-sm text-slate-400 mt-1 max-w-2xl">
-            Empirically verifies the <strong>&gt;95% Win Probability</strong> requirement and measures target vs simulated completion times across the Sawtooth difficulty curve.
+            Measures win rates, average completion times, and Add Row counts across difficulty levels.
           </p>
         </div>
 
@@ -82,21 +82,12 @@ export const SimulatorPanel: React.FC = () => {
           return (
             <div
               key={lvl}
-              className={`bg-slate-900 border rounded-3xl p-6 transition-all shadow-xl relative overflow-hidden ${
-                config.isReliefLevel
-                  ? 'border-emerald-500/40 bg-gradient-to-b from-slate-900 via-slate-900 to-emerald-950/20'
-                  : 'border-slate-800'
-              }`}
+              className="bg-slate-900 border border-slate-800 rounded-3xl p-6 transition-all shadow-xl relative overflow-hidden"
             >
               {/* Header */}
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <span className="text-xl font-black text-white">Level {lvl}</span>
-                  {config.isReliefLevel && (
-                    <span className="ml-2 px-2 py-0.5 text-[10px] font-black bg-emerald-500/20 text-emerald-300 rounded-full border border-emerald-500/40">
-                      ⚡ Relief
-                    </span>
-                  )}
                 </div>
                 <button
                   onClick={() => runSimulation(lvl)}

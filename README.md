@@ -1,10 +1,10 @@
-# 🎮 Number Match Logic Engine
+# 🎮 Number Match Game Engine
 
 [![Live Web Preview](https://img.shields.io/badge/Vercel-Web%20App%20Preview-black?style=for-the-badge&logo=vercel)](https://number-match-logic-engine.vercel.app)
 [![Android Release](https://img.shields.io/badge/Download-Android%20APK-brightgreen?style=for-the-badge&logo=android)](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/latest/download/app-release.apk)
 [![GitHub Release](https://img.shields.io/github/v/release/ayushmanji/Number-Match-Logic-Engine?style=for-the-badge&logo=github)](https://github.com/ayushmanji/Number-Match-Logic-Engine/releases/tag/v1.0.0)
 
-> A deterministic solvability system and interactive game engine for Number Match puzzles, built with React, TypeScript, Vite, Tailwind CSS, and Capacitor for Android.
+> An interactive puzzle game engine and difficulty progression system for Number Match puzzles, built with React, TypeScript, Vite, Tailwind CSS, and Capacitor for Android.
 
 ---
 
@@ -27,9 +27,9 @@
 ## ✨ Features
 
 - **Interactive Game Board**: Play classic Number Match puzzle levels with state tracking and hint generation.
-- **Deterministic Solvability Engine**: Solvability simulator panel to model outcomes, strategy analysis, and level performance.
-- **Sawtooth Chart Visualization**: Dynamic charting of puzzle difficulty and pair density across steps.
-- **Interactive Documentation**: Built-in architecture breakdown, game rules, and technical specifications.
+- **Level Solvability Simulator**: Solvability simulator panel to model outcomes, strategy analysis, and level performance.
+- **Difficulty Chart Visualization**: Dynamic charting of puzzle difficulty and pair density across steps.
+- **Technical Documentation**: Built-in architecture breakdown, game rules, and technical specifications.
 - **Fully Responsive Mobile Design**: Custom mobile navbar, touch targets, and grid layout optimized for mobile screens.
 
 ---

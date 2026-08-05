@@ -35,10 +35,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
             <div>
               <h1 className="text-lg font-bold bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent leading-tight">
-                Number Match Logic Engine
+                Number Match Game Engine
               </h1>
               <p className="text-[11px] text-slate-400 font-medium">
-                Deterministic Solvability & Sawtooth Difficulty System
+                Solvability & Difficulty System
               </p>
             </div>
           </div>
@@ -54,7 +54,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               {Array.from({ length: 15 }, (_, i) => i + 1).map((lvl) => (
                 <option key={lvl} value={lvl}>
-                  Level {lvl} {lvl === 6 || lvl === 11 ? '⚡ (Relief)' : ''}
+                  Level {lvl}
                 </option>
               ))}
             </select>
@@ -98,7 +98,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   Number Match
                 </h1>
                 <p className="text-[10px] text-slate-400 font-medium truncate hidden sm:block">
-                  Deterministic Logic Engine
+                  Logic Engine
                 </p>
               </div>
             </div>
@@ -114,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               >
                 {Array.from({ length: 15 }, (_, i) => i + 1).map((lvl) => (
                   <option key={lvl} value={lvl}>
-                    Level {lvl} {lvl === 6 || lvl === 11 ? '⚡' : ''}
+                    Level {lvl}
                   </option>
                 ))}
               </select>
