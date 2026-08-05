@@ -50,7 +50,7 @@ export function generateAddRowCells(
     });
   } else {
     // Standard assistance: inject complement in same column for active cells based on assistProbability
-    const assistProbability = Math.max(0.15, 1.0 - (level - 1) * 0.12);
+    const assistProbability = Math.max(0.30, 1.0 - (level - 1) * 0.05);
     activeCells.forEach((c, idx) => {
       if (Math.random() < assistProbability && idx < newValues.length) {
         newValues[idx] = 10 - c.val > 0 ? 10 - c.val : c.val;
