@@ -68,13 +68,12 @@ export function generateAddRowCells(
     }
   }
 
-  const startRow = Math.max(...currentCells.map((c) => c.row)) + 1;
   const startIndex = currentCells.length;
 
   const newCells: Cell[] = newValues.map((val, i) => {
     const globalIdx = startIndex + i;
-    const r = startRow + Math.floor(i / numCols);
-    const c = i % numCols;
+    const r = Math.floor(globalIdx / numCols);
+    const c = globalIdx % numCols;
     return {
       id: `cell_${level}_${r}_${c}_${Math.random().toString(36).substr(2, 5)}`,
       val,
