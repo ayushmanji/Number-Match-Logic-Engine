@@ -44,6 +44,12 @@ export function generateSeededBoard(level: number, numCols = 9): SeededBoard {
       secondHalf.push(b);
     }
 
+    // Shuffle secondHalf so buried pairs don't trivially align in identical columns
+    for (let i = secondHalf.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [secondHalf[i], secondHalf[j]] = [secondHalf[j], secondHalf[i]];
+    }
+
     sequence.push(...firstHalf);
     
     if (sequence.length < totalCells) {

@@ -21,7 +21,7 @@ export function generateAddRowCells(
     return { newCells: [], rescueTriggered: false, stragglersTargetedCount: 0 };
   }
 
-  const rescueTriggered = consecutiveAddRowsWithoutMatch >= 2 || (level === 1 && consecutiveAddRowsWithoutMatch >= 1);
+  const rescueTriggered = consecutiveAddRowsWithoutMatch >= 2 || (level <= 2 && consecutiveAddRowsWithoutMatch >= 1);
 
   const rowActiveCounts = new Map<number, Cell[]>();
   activeCells.forEach((c) => {
@@ -53,22 +53,33 @@ export function generateAddRowCells(
       newValues[1] = targetVal;
       newValues[2] = getComplementaryValue(targetVal);
     }
-  }
+  } else {
+    // Level-based boundary match injection to guarantee smooth monotonic difficulty
+    const assistProbability = Math.max(0, 1.0 - (level - 1) * 0.12);
+    if (activeCells.length > 0 && Math.random() < assistProbability) {
+      const lastActive = activeCells[activeCells.length - 1];
+      const complementForLast = 10 - lastActive.val > 0 ? 10 - lastActive.val : lastActive.val;
+      newValues[0] = complementForLast;
 
-  if (stragglers.length > 0) {
-    stragglers.forEach((straggler, idx) => {
-      const replaceIdx = (idx * 3) % newValues.length;
-      const complementVal = 10 - straggler.val > 0 ? 10 - straggler.val : straggler.val;
-      newValues[replaceIdx] = complementVal;
+      if (activeCells.length <= 4 && newValues.length > 1) {
+        const firstActive = activeCells[0];
+        const complementForFirst = 10 - firstActive.val > 0 ? 10 - firstActive.val : firstActive.val;
+        newValues[newValues.length - 1] = complementForFirst;
+      }
       stragglersTargetedCount++;
-    });
-  }
+    }
 
-  if (!rescueTriggered && config.decoyRatio > 0.40) {
-    const decoyCount = Math.floor(newValues.length * (config.decoyRatio - 0.3));
-    for (let d = 0; d < decoyCount; d++) {
-      const randIdx = Math.floor(Math.random() * newValues.length);
-      newValues[randIdx] = Math.floor(Math.random() * 9) + 1;
+    // Decoy replacement scaling with decoyRatio
+    if (config.decoyRatio > 0) {
+      const startIdx = assistProbability > 0 ? 1 : 0; // Protect injected boundary match
+      const endIdx = (assistProbability > 0 && activeCells.length <= 4 && newValues.length > 1) ? newValues.length - 1 : newValues.length;
+      const decoyCount = Math.floor(newValues.length * config.decoyRatio * 0.35);
+      for (let d = 0; d < decoyCount; d++) {
+        const randIdx = startIdx + Math.floor(Math.random() * Math.max(1, endIdx - startIdx));
+        if (randIdx < newValues.length) {
+          newValues[randIdx] = Math.floor(Math.random() * 9) + 1;
+        }
+      }
     }
   }
 
