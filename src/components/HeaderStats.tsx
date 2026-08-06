@@ -56,16 +56,22 @@ export const HeaderStats: React.FC<HeaderStatsProps> = ({
         <div className="grid grid-cols-2 sm:flex sm:items-center justify-between gap-2 sm:gap-4">
           {/* Stats Group */}
           <div className="col-span-2 sm:col-span-1 flex items-center gap-2 sm:gap-3">
-            {/* Live Elapsed Play Time vs Target Benchmark */}
-            <div className="flex-1 sm:flex-initial flex items-center space-x-2 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl border bg-slate-950 border-slate-800">
-              <Clock className="w-4 h-4 shrink-0 text-amber-400" />
+            {/* Live Target Countdown Timer */}
+            <div
+              className={`flex-1 sm:flex-initial flex items-center space-x-2 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl border transition-all ${
+                boardState.timeRemaining <= 10 && boardState.timeRemaining > 0
+                  ? 'bg-rose-500/10 border-rose-500/40 text-rose-300 animate-pulse'
+                  : 'bg-slate-950 border-slate-800'
+              }`}
+            >
+              <Clock className={`w-4 h-4 shrink-0 ${boardState.timeRemaining <= 10 ? 'text-rose-400' : 'text-amber-400'}`} />
               <div>
                 <div className="text-[9px] sm:text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
-                  Elapsed / Target
+                  {boardState.timeRemaining <= 10 ? 'Time Remaining!' : 'Target Time'}
                 </div>
-                <div className="text-xs sm:text-sm font-extrabold font-mono text-amber-300">
-                  {formatTime(boardState.totalTimeElapsed)}{' '}
-                  <span className="text-[10px] text-slate-500 font-normal">/ {config.targetTimeSeconds}s Target</span>
+                <div className={`text-xs sm:text-sm font-extrabold font-mono ${boardState.timeRemaining <= 10 ? 'text-rose-400' : 'text-amber-300'}`}>
+                  {formatTime(boardState.timeRemaining)}{' '}
+                  <span className="text-[10px] text-slate-500 font-normal">/ {config.targetTimeSeconds}s</span>
                 </div>
               </div>
             </div>
