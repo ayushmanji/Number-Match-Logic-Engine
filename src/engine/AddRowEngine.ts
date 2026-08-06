@@ -42,28 +42,47 @@ export function generateAddRowCells(
   let stragglersTargetedCount = 0;
 
   if (rescueTriggered) {
-    // Rescue: for every active cell, inject its complement in the exact same column
+    // Rescue Mechanic: Force instant complement match for active cells
     activeCells.forEach((c, idx) => {
       if (idx < newValues.length) {
-        newValues[idx] = 10 - c.val > 0 ? 10 - c.val : c.val;
+        newValues[idx] = c.val === 5 ? 5 : (10 - c.val > 0 ? 10 - c.val : c.val);
       }
     });
   } else {
-    // Standard assistance: inject complement in same column for active cells based on assistProbability
-    const assistProbability = Math.max(0.30, 1.0 - (level - 1) * 0.05);
+    // Straggler Cleanup Priority: Ensure rows with 1 or 2 remaining active numbers get direct complement injection
+    const stragglerIndices = new Set<number>();
     activeCells.forEach((c, idx) => {
-      if (Math.random() < assistProbability && idx < newValues.length) {
-        newValues[idx] = 10 - c.val > 0 ? 10 - c.val : c.val;
+      if (stragglers.some((s) => s.id === c.id)) {
+        stragglerIndices.add(idx);
+      }
+    });
+
+    // 1. Force complement for all stragglers first
+    stragglerIndices.forEach((idx) => {
+      if (idx < newValues.length) {
+        const origVal = activeCells[idx].val;
+        newValues[idx] = origVal === 5 ? 5 : (10 - origVal > 0 ? 10 - origVal : origVal);
         stragglersTargetedCount++;
       }
     });
 
-    // Decoy friction scaling with decoyRatio
-    if (config.decoyRatio > 0.10) {
-      const decoyCount = Math.floor(newValues.length * config.decoyRatio * 0.3);
+    // 2. Standard assistance for remaining active cells based on level assist probability
+    const assistProbability = Math.max(0.35, 1.0 - (level - 1) * 0.05);
+    activeCells.forEach((c, idx) => {
+      if (!stragglerIndices.has(idx) && Math.random() < assistProbability && idx < newValues.length) {
+        newValues[idx] = c.val === 5 ? 5 : (10 - c.val > 0 ? 10 - c.val : c.val);
+      }
+    });
+
+    // 3. Apply level decoy friction
+    if (config.decoyRatio > 0.05) {
+      const decoyCount = Math.floor(newValues.length * config.decoyRatio * 0.25);
       for (let d = 0; d < decoyCount; d++) {
         const randIdx = Math.floor(Math.random() * newValues.length);
-        newValues[randIdx] = Math.floor(Math.random() * 9) + 1;
+        // Do not ruin straggler guaranteed matches if possible
+        if (!stragglerIndices.has(randIdx)) {
+          newValues[randIdx] = Math.floor(Math.random() * 9) + 1;
+        }
       }
     }
   }

@@ -98,45 +98,52 @@ export const DocumentationView: React.FC = () => {
                 <th className="px-3 py-2">Level</th>
                 <th className="px-3 py-2">Target Time</th>
                 <th className="px-3 py-2">Experience Goal</th>
-                <th className="px-3 py-2">Add Rows Used</th>
-                <th className="px-3 py-2">Density %</th>
+                <th className="px-3 py-2">Add Row Button (+) Used</th>
+                <th className="px-3 py-2">Initial Match Density</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800">
               <tr>
                 <td className="px-3 py-2 font-bold text-indigo-400">Level 1</td>
-                <td className="px-3 py-2 font-bold text-amber-300">120s</td>
-                <td className="px-3 py-2">Easy tutorial. 92% direct matches. Instant gratification.</td>
-                <td className="px-3 py-2">1 time</td>
-                <td className="px-3 py-2 text-emerald-400">92%</td>
+                <td className="px-3 py-2 font-bold text-amber-300">45s</td>
+                <td className="px-3 py-2">Easy. 70% match density. Instant gratification.</td>
+                <td className="px-3 py-2 font-medium text-emerald-400">1 time</td>
+                <td className="px-3 py-2 text-emerald-400">70%</td>
               </tr>
               <tr>
                 <td className="px-3 py-2 font-bold text-indigo-400">Level 3</td>
-                <td className="px-3 py-2 font-bold text-amber-300">95s</td>
-                <td className="px-3 py-2">Normal. Requires visual scanning.</td>
-                <td className="px-3 py-2">1–2 times</td>
-                <td className="px-3 py-2 text-emerald-400">69%</td>
+                <td className="px-3 py-2 font-bold text-amber-300">90s</td>
+                <td className="px-3 py-2">Normal. Requires scanning.</td>
+                <td className="px-3 py-2 font-medium text-emerald-400">2 to 3 times</td>
+                <td className="px-3 py-2 text-emerald-400">50%</td>
               </tr>
               <tr>
                 <td className="px-3 py-2 font-bold text-indigo-400">Level 5</td>
-                <td className="px-3 py-2 font-bold text-amber-300">75s</td>
-                <td className="px-3 py-2">Hard peak. Strategic planning required.</td>
-                <td className="px-3 py-2">2–4 times</td>
-                <td className="px-3 py-2 text-emerald-400">38%</td>
+                <td className="px-3 py-2 font-bold text-amber-300">150s</td>
+                <td className="px-3 py-2">Hard. Matches are buried behind decoys.</td>
+                <td className="px-3 py-2 font-medium text-emerald-400">2 to 3 times</td>
+                <td className="px-3 py-2 text-emerald-400">30%</td>
               </tr>
-              <tr>
-                <td className="px-3 py-2 font-bold text-indigo-400">Level 6</td>
-                <td className="px-3 py-2 font-bold text-amber-300">70s</td>
-                <td className="px-3 py-2">Advanced. Deep decoy layers.</td>
-                <td className="px-3 py-2">3–4 times</td>
-                <td className="px-3 py-2 text-emerald-400">23%</td>
+              <tr className="bg-emerald-500/10">
+                <td className="px-3 py-2 font-bold text-emerald-400">Level 6 (Relief)</td>
+                <td className="px-3 py-2 font-bold text-amber-300">90s</td>
+                <td className="px-3 py-2 font-semibold text-emerald-300">Relief (Drop). Back to "Normal" difficulty.</td>
+                <td className="px-3 py-2 font-medium text-emerald-400">2 to 4 times</td>
+                <td className="px-3 py-2 text-emerald-400">50%</td>
               </tr>
               <tr>
                 <td className="px-3 py-2 font-bold text-indigo-400">Level 10</td>
-                <td className="px-3 py-2 font-bold text-amber-300">50s</td>
-                <td className="px-3 py-2">Master peak. Extreme timer and decoys.</td>
-                <td className="px-3 py-2">4–5 times</td>
-                <td className="px-3 py-2 text-emerald-400">0%</td>
+                <td className="px-3 py-2 font-bold text-amber-300">210s</td>
+                <td className="px-3 py-2">Peak Master Challenge. Strategic precision required.</td>
+                <td className="px-3 py-2 font-medium text-emerald-400">4 to 5 times</td>
+                <td className="px-3 py-2 text-emerald-400">20%</td>
+              </tr>
+              <tr className="bg-emerald-500/10">
+                <td className="px-3 py-2 font-bold text-emerald-400">Level 11 (Relief)</td>
+                <td className="px-3 py-2 font-bold text-amber-300">110s</td>
+                <td className="px-3 py-2 font-semibold text-emerald-300">Relief (Drop). Refreshing breather after peak.</td>
+                <td className="px-3 py-2 font-medium text-emerald-400">2 to 4 times</td>
+                <td className="px-3 py-2 text-emerald-400">45%</td>
               </tr>
             </tbody>
           </table>

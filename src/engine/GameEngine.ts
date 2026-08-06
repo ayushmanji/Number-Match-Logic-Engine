@@ -45,11 +45,6 @@ export class GameEngine {
 
     this.state.totalTimeElapsed += seconds;
     this.state.timeRemaining = Math.max(0, this.state.timeRemaining - seconds);
-
-    if (this.state.timeRemaining <= 0) {
-      this.state.timeExpired = true;
-      this.state.isGameOver = true;
-    }
   }
 
   public makeMatch(idA: string, idB: string): boolean {
